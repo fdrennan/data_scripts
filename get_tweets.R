@@ -79,7 +79,7 @@ if(nrow(trumpTweets) != 0) {
 
 }
 
-mongoConn <- drentools::mongo_connect('tweets', 'twitter')
+mongoConn <- mongo_connect('tweets', 'twitter')
 
 tt$text <- 
   tt$text %>% 
@@ -93,6 +93,6 @@ tt = tt %>% nest
 tt$time = as.character(Sys.time())
 
 tt$person = 'trump'
-print(.libPaths())
+cat(.libPaths())
 # insert to db.
 mongoConn$insert(tt)
