@@ -89,7 +89,7 @@ mongo_connect <-
     m
   }
 
-mongoConn <- mongo_connect('tweets_new', 'twitter')
+mongoConn <- mongo_connect('tweet', 'twitter')
 
 tt$text <- 
   tt$text %>% 
@@ -98,15 +98,11 @@ tt$text <-
   ) %>% 
   unlist
 
-# tt = tt %>% nest
-tt %>% 
-  group_by(id) %>% 
-  nest
 
 tt$time = Sys.time()
 
 tt$person = 'trump'
-tt$`_id` = 'trump_tweets'
 
 # insert to db.
 mongoConn$insert(tt)
+
