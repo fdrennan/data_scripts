@@ -79,6 +79,15 @@ if(nrow(trumpTweets) != 0) {
 
 }
 
+mongo_connect <- function(collectionName, dbName) {
+  # Cred
+  hostName = "mongodb://admin:thirdday1@18.218.94.116:27017"
+  
+  m <- mongolite::mongo(collection = collectionName , db = dbName, url = hostName)
+  
+  m
+}
+
 mongoConn <- mongo_connect('tweets', 'twitter')
 
 tt$text <- 
