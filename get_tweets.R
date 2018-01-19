@@ -79,7 +79,7 @@ if(nrow(trumpTweets) != 0) {
 
 }
 
-mongoConn <- mongo_connect('tweets', 'twitter')
+mongoConn <- drentools::mongo_connect('tweets', 'twitter')
 
 tt$text <- 
   tt$text %>% 
