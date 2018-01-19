@@ -93,6 +93,8 @@ tt = tt %>% nest
 tt$time = as.character(Sys.time())
 
 tt$person = 'trump'
+
 cat(.libPaths())
+
 # insert to db.
 mongoConn$insert(tt)
