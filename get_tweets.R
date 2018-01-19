@@ -25,7 +25,7 @@ tt <- trumpTweets
 trumpTweets$actual = NA
 trumpTweets$links = NA
 
-filtered = ymd_hms(trumpTweets$created) > (Sys.time() %>% ymd_hms) - hm("0, 10")
+filtered = ymd_hms(trumpTweets$created) > (Sys.time() %>% ymd_hms) - hm("0, 1")
 trumpTweets = trumpTweets[filtered,]
 #   
 if(nrow(trumpTweets) != 0) {
@@ -77,15 +77,6 @@ if(nrow(trumpTweets) != 0) {
                row.names = FALSE)
 
 
-}
-
-mongo_connect <- function(collectionName, dbName) {
-  # Cred
-  hostName = "mongodb://admin:thirdday1@18.218.94.116:27017"
-  
-  m <- mongolite::mongo(collection = collectionName , db = dbName, url = hostName)
-  
-  m
 }
 
 mongoConn <- mongo_connect('tweets', 'twitter')
