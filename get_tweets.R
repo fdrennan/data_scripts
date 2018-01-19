@@ -24,10 +24,10 @@ trumpTweets <- twListToDF(tweets)
 tt <- trumpTweets
 trumpTweets$actual = NA
 trumpTweets$links = NA
-
+# 
 filtered = ymd_hms(trumpTweets$created) > (Sys.time() %>% ymd_hms) - hm("0, 1")
 trumpTweets = trumpTweets[filtered,]
-#   
+
 if(nrow(trumpTweets) != 0) {
   
   
@@ -69,6 +69,13 @@ if(nrow(trumpTweets) != 0) {
   trumpTweets$time = as.character(Sys.time())
   Encoding(trumpTweets$text) = 'byte'
   
+  trumpTweets$text <- 
+    trumpTweets$text %>% 
+    lapply(
+      function(x) sub("\xed\xa0\xbc\xed\xb7\xba\xed\xa0\xbc\xed\xb7\xb8", "", x )
+    ) %>% 
+    unlist
+  
   # writes df to the PostgreSQL database "postgres", table "cartable"
   dbWriteTable(con, 
                "trumpTweets",
@@ -105,4 +112,6 @@ tt$person = 'trump'
 
 # insert to db.
 mongoConn$insert(tt)
+
+
 
