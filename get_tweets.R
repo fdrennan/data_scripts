@@ -89,22 +89,24 @@ mongo_connect <-
     m
   }
 
-mongoConn <- mongo_connect('tweets', 'twitter')
+mongoConn <- mongo_connect('tweets_new', 'twitter')
 
 tt$text <- 
   tt$text %>% 
   lapply(
     function(x) sub("\xed\xa0\xbc\xed\xb7\xba\xed\xa0\xbc\xed\xb7\xb8", "", x )
   ) %>% 
-  as.vector()
+  unlist
 
-tt = tt %>% nest
+# tt = tt %>% nest
+tt %>% 
+  group_by(id) %>% 
+  nest
 
-tt$time = as.character(Sys.time())
+tt$time = Sys.time()
 
 tt$person = 'trump'
-
-cat(.libPaths())
+tt$`_id` = 'trump_tweets'
 
 # insert to db.
 mongoConn$insert(tt)
