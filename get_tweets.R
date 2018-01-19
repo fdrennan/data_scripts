@@ -94,4 +94,5 @@ tt$time = as.character(Sys.time())
 
 tt$person = 'trump'
 
+# insert into db.
 mongoConn$insert(tt)
