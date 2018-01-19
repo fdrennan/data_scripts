@@ -81,11 +81,19 @@ if(nrow(trumpTweets) != 0) {
 
 mongoConn <- mongo_connect('tweets', 'twitter')
 
+tt$text <- 
+  tt$text %>% 
+  lapply(
+    function(x) sub("\xed\xa0\xbc\xed\xb7\xba\xed\xa0\xbc\xed\xb7\xb8", "", x )
+  ) %>% 
+  as.vector()
 
-Encoding(tt$text) = 'byte'
 tt = tt %>% nest
-tt$trump = 'trump'
+
+tt$time = as.character(Sys.time())
+
+tt$person = 'trump'
+
 
 
 mongoConn$insert(tt)
-
