@@ -1,0 +1,853 @@
+[K]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ cd /srv/
+]0;/srv]0;rstudio@ip-172-31-36-66: /srv[01;32mrstudio@ip-172-31-36-66[00m:[01;34m/srv[00m$ ls
+[0m[01;34mshiny-server[0m
+]0;/srv]0;rstudio@ip-172-31-36-66: /srv[01;32mrstudio@ip-172-31-36-66[00m:[01;34m/srv[00m$ cd shiny-server/
+]0;/srv/shiny-server]0;rstudio@ip-172-31-36-66: /srv/shiny-server[01;32mrstudio@ip-172-31-36-66[00m:[01;34m/srv/shiny-server[00m$ ls
+[0m[01;34mbible_application[0m  [01;34mexcel_binder[0m  [01;36mindex.html[0m  [01;36msample-apps[0m  [01;34mstorms[0m  [01;34mtidy_quant_app[0m
+do [K]0;rstudio@ip-172-31-36-66: /srv/shiny-server[01;32mrstudio@ip-172-31-36-66[00m:[01;34m/srv/shiny-server[00m$ sudo apt-get install libssl-dev
+[sudo] password for rstudio: 
+Sorry, try again.
+[sudo] password for rstudio: 
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+libssl-dev is already the newest version (1.0.2g-1ubuntu4.10).
+The following packages were automatically installed and are no longer required:
+  linux-aws-headers-4.4.0-1043 linux-headers-4.4.0-1043-aws
+  linux-image-4.4.0-1043-aws
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 77 not upgraded.
+]0;/srv/shiny-server]0;rstudio@ip-172-31-36-66: /srv/shiny-server[01;32mrstudio@ip-172-31-36-66[00m:[01;34m/srv/shiny-server[00m$ sudo apt-get install libssl-dev[K[K[K[K[K[K[K[K[K[Klibsasl2-dev
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  linux-aws-headers-4.4.0-1043 linux-headers-4.4.0-1043-aws
+  linux-image-4.4.0-1043-aws
+Use 'sudo apt autoremove' to remove them.
+The following NEW packages will be installed:
+  libsasl2-dev
+0 upgraded, 1 newly installed, 0 to remove and 77 not upgraded.
+Need to get 254 kB of archives.
+After this operation, 831 kB of additional disk space will be used.
+0% [Working]            Get:1 http://us-east-2.ec2.archive.ubuntu.com/ubuntu xenial/main amd64 libsasl2-dev amd64 2.1.26.dfsg1-14build1 [254 kB]
+0% [1 libsasl2-dev 0 B/254 kB 0%]                                 100% [Working]              Fetched 254 kB in 0s (21.0 MB/s)
+Selecting previously unselected package libsasl2-dev.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 128208 files and directories currently installed.)
+Preparing to unpack .../libsasl2-dev_2.1.26.dfsg1-14build1_amd64.deb ...
+Unpacking libsasl2-dev (2.1.26.dfsg1-14build1) ...
+Processing triggers for man-db (2.7.5-1) ...
+Setting up libsasl2-dev (2.1.26.dfsg1-14build1) ...
+]0;/srv/shiny-server]0;rstudio@ip-172-31-36-66: /srv/shiny-server[01;32mrstudio@ip-172-31-36-66[00m:[01;34m/srv/shiny-server[00m$ sudo su - \
+> -c "R -e \"install.packages('mongolite', repos='https://cran.rstudio.com/')\""
+
+R version 3.4.2 (2017-09-28) -- "Short Summer"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> install.packages('mongolite', repos='https://cran.rstudio.com/')
+Installing package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+trying URL 'https://cran.rstudio.com/src/contrib/mongolite_1.5.tar.gz'
+Content type 'application/x-gzip' length 503191 bytes (491 KB)
+==================================================
+downloaded 491 KB
+
+* installing *source* package ‘mongolite’ ...
+** package ‘mongolite’ successfully unpacked and MD5 sums checked
+Found pkg-config cflags and libs!
+Using PKG_CFLAGS=
+Using PKG_LIBS=-lsasl2 -lssl -lcrypto -lresolv
+SASL has sasl_client_done.
+Compiling with extra alignment.
+** libs
+rm -f mongolite.so mongoc/libstatmongoc.a bson/libstatbson.a bson/bcon.o bson/bson-clock.o bson/bson-context.o bson/bson-error.o bson/bson-iso8601.o bson/bson-iter.o bson/bson-json.o bson/bson-keys.o bson/bson-md5.o bson/bson-memory.o bson/bson-oid.o bson/bson-reader.o bson/bson-string.o bson/bson-timegm.o bson/bson-utf8.o bson/bson-value.o  bson/bson.o bson/bson-decimal128.o jsonsl/jsonsl.o mongoc/mongoc-array.o mongoc/mongoc-b64.o mongoc/mongoc-buffer.o mongoc/mongoc-bulk-operation.o mongoc/mongoc-client-pool.o mongoc/mongoc-client.o mongoc/mongoc-cluster.o mongoc/mongoc-collection.o mongoc/mongoc-counters.o mongoc/mongoc-cursor-array.o mongoc/mongoc-cursor-cursorid.o mongoc/mongoc-cursor-transform.o mongoc/mongoc-cursor.o mongoc/mongoc-database.o mongoc/mongoc-gridfs-file-list.o mongoc/mongoc-gridfs-file-page.o mongoc/mongoc-gridfs-file.o mongoc/mongoc-gridfs.o mongoc/mongoc-index.o mongoc/mongoc-init.o mongoc/mongoc-list.o mongoc/mongoc-log.o mongoc/mongoc-rand-openssl.o mongoc/mongoc-read-prefs.o mongoc/mongoc-rpc.o mongoc/mongoc-sasl.o mongoc/mongoc-scram.o mongoc/mongoc-socket.o mongoc/mongoc-ssl.o mongoc/mongoc-stream-buffered.o	mongoc/mongoc-stream-socket.o mongoc/mongoc-stream-tls.o mongoc/mongoc-stream.o mongoc/mongoc-uri.o mongoc/mongoc-util.o mongoc/mongoc-write-command.o mongoc/mongoc-write-concern.o mongoc/mongoc-topology-description-apm.o mongoc/mongoc-async.o mongoc/mongoc-async-cmd.o mongoc/mongoc-host-list.o mongoc/mongoc-set.o mongoc/mongoc-server-description.o mongoc/mongoc-topology-description.o mongoc/mongoc-topology.o mongoc/mongoc-topology-scanner.o mongoc/mongoc-version-functions.o mongoc/mongoc-memcmp.o mongoc/mongoc-server-stream.o mongoc/mongoc-find-and-modify.o mongoc/mongoc-read-concern.o mongoc/mongoc-openssl.o mongoc/mongoc-apm.o mongoc/mongoc-crypto.o mongoc/mongoc-crypto-openssl.o mongoc/mongoc-handshake.o mongoc/mongoc-stream-tls-openssl.o mongoc/mongoc-stream-tls-openssl-bio.o mongoc/mongoc-cluster-sasl.o mongoc/mongoc-cmd.o mongoc/mongoc-change-stream.o mongoc/mongoc-client-session.o mongoc/mongoc-cluster-cyrus.o mongoc/mongoc-compression.o mongoc/mongoc-cyrus.o mongoc/mongoc-write-command-legacy.o mongoc/mongoc-linux-distro-scanner.o bson.o client.o collection.o cursor.o hex.o mongo_log.o reader.o utils.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson.c -o bson.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c client.c -o client.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c collection.c -o collection.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c cursor.c -o cursor.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c hex.c -o hex.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongo_log.c -o mongo_log.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c reader.c -o reader.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c utils.c -o utils.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bcon.c -o bson/bcon.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson-clock.c -o bson/bson-clock.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson-context.c -o bson/bson-context.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson-error.c -o bson/bson-error.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson-iso8601.c -o bson/bson-iso8601.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson-iter.c -o bson/bson-iter.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson-json.c -o bson/bson-json.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson-keys.c -o bson/bson-keys.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson-md5.c -o bson/bson-md5.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson-memory.c -o bson/bson-memory.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson-oid.c -o bson/bson-oid.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson-reader.c -o bson/bson-reader.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson-string.c -o bson/bson-string.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson-timegm.c -o bson/bson-timegm.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson-utf8.c -o bson/bson-utf8.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson-value.c -o bson/bson-value.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson.c -o bson/bson.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bson/bson-decimal128.c -o bson/bson-decimal128.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c jsonsl/jsonsl.c -o jsonsl/jsonsl.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-array.c -o mongoc/mongoc-array.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-b64.c -o mongoc/mongoc-b64.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-buffer.c -o mongoc/mongoc-buffer.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-bulk-operation.c -o mongoc/mongoc-bulk-operation.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-client-pool.c -o mongoc/mongoc-client-pool.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-client.c -o mongoc/mongoc-client.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-cluster.c -o mongoc/mongoc-cluster.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-collection.c -o mongoc/mongoc-collection.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-counters.c -o mongoc/mongoc-counters.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-cursor-array.c -o mongoc/mongoc-cursor-array.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-cursor-cursorid.c -o mongoc/mongoc-cursor-cursorid.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-cursor-transform.c -o mongoc/mongoc-cursor-transform.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-cursor.c -o mongoc/mongoc-cursor.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-database.c -o mongoc/mongoc-database.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-gridfs-file-list.c -o mongoc/mongoc-gridfs-file-list.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-gridfs-file-page.c -o mongoc/mongoc-gridfs-file-page.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-gridfs-file.c -o mongoc/mongoc-gridfs-file.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-gridfs.c -o mongoc/mongoc-gridfs.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-index.c -o mongoc/mongoc-index.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-init.c -o mongoc/mongoc-init.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-list.c -o mongoc/mongoc-list.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-log.c -o mongoc/mongoc-log.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-rand-openssl.c -o mongoc/mongoc-rand-openssl.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-read-prefs.c -o mongoc/mongoc-read-prefs.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-rpc.c -o mongoc/mongoc-rpc.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-sasl.c -o mongoc/mongoc-sasl.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-scram.c -o mongoc/mongoc-scram.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-socket.c -o mongoc/mongoc-socket.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-ssl.c -o mongoc/mongoc-ssl.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-stream-buffered.c -o mongoc/mongoc-stream-buffered.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-stream-socket.c -o mongoc/mongoc-stream-socket.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-stream-tls.c -o mongoc/mongoc-stream-tls.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-stream.c -o mongoc/mongoc-stream.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-uri.c -o mongoc/mongoc-uri.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-util.c -o mongoc/mongoc-util.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-write-command.c -o mongoc/mongoc-write-command.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-write-concern.c -o mongoc/mongoc-write-concern.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-topology-description-apm.c -o mongoc/mongoc-topology-description-apm.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-async.c -o mongoc/mongoc-async.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-async-cmd.c -o mongoc/mongoc-async-cmd.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-host-list.c -o mongoc/mongoc-host-list.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-set.c -o mongoc/mongoc-set.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-server-description.c -o mongoc/mongoc-server-description.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-topology-description.c -o mongoc/mongoc-topology-description.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-topology.c -o mongoc/mongoc-topology.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-topology-scanner.c -o mongoc/mongoc-topology-scanner.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-version-functions.c -o mongoc/mongoc-version-functions.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-memcmp.c -o mongoc/mongoc-memcmp.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-server-stream.c -o mongoc/mongoc-server-stream.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-find-and-modify.c -o mongoc/mongoc-find-and-modify.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-read-concern.c -o mongoc/mongoc-read-concern.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-openssl.c -o mongoc/mongoc-openssl.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-apm.c -o mongoc/mongoc-apm.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-crypto.c -o mongoc/mongoc-crypto.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-crypto-openssl.c -o mongoc/mongoc-crypto-openssl.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-handshake.c -o mongoc/mongoc-handshake.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-stream-tls-openssl.c -o mongoc/mongoc-stream-tls-openssl.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-stream-tls-openssl-bio.c -o mongoc/mongoc-stream-tls-openssl-bio.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-cluster-sasl.c -o mongoc/mongoc-cluster-sasl.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-cmd.c -o mongoc/mongoc-cmd.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-change-stream.c -o mongoc/mongoc-change-stream.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-client-session.c -o mongoc/mongoc-client-session.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-cluster-cyrus.c -o mongoc/mongoc-cluster-cyrus.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-compression.c -o mongoc/mongoc-compression.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-cyrus.c -o mongoc/mongoc-cyrus.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-write-command-legacy.c -o mongoc/mongoc-write-command-legacy.o
+gcc -std=gnu99 -I/usr/share/R/include -DNDEBUG -I. -Ijsonsl -Ibson -Imongoc -DBSON_COMPILATION -DMONGOC_COMPILATION -DMONGOC_HAVE_SASL_CLIENT_DONE -DBSON_EXTRA_ALIGN     -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c mongoc/mongoc-linux-distro-scanner.c -o mongoc/mongoc-linux-distro-scanner.o
+ar rcs bson/libstatbson.a bson/bcon.o bson/bson-clock.o bson/bson-context.o bson/bson-error.o bson/bson-iso8601.o bson/bson-iter.o bson/bson-json.o bson/bson-keys.o bson/bson-md5.o bson/bson-memory.o bson/bson-oid.o bson/bson-reader.o bson/bson-string.o bson/bson-timegm.o bson/bson-utf8.o bson/bson-value.o  bson/bson.o bson/bson-decimal128.o jsonsl/jsonsl.o
+ar rcs mongoc/libstatmongoc.a mongoc/mongoc-array.o mongoc/mongoc-b64.o mongoc/mongoc-buffer.o mongoc/mongoc-bulk-operation.o mongoc/mongoc-client-pool.o mongoc/mongoc-client.o mongoc/mongoc-cluster.o mongoc/mongoc-collection.o mongoc/mongoc-counters.o mongoc/mongoc-cursor-array.o mongoc/mongoc-cursor-cursorid.o mongoc/mongoc-cursor-transform.o mongoc/mongoc-cursor.o mongoc/mongoc-database.o mongoc/mongoc-gridfs-file-list.o mongoc/mongoc-gridfs-file-page.o mongoc/mongoc-gridfs-file.o mongoc/mongoc-gridfs.o mongoc/mongoc-index.o mongoc/mongoc-init.o mongoc/mongoc-list.o mongoc/mongoc-log.o mongoc/mongoc-rand-openssl.o mongoc/mongoc-read-prefs.o mongoc/mongoc-rpc.o mongoc/mongoc-sasl.o mongoc/mongoc-scram.o mongoc/mongoc-socket.o mongoc/mongoc-ssl.o mongoc/mongoc-stream-buffered.o	mongoc/mongoc-stream-socket.o mongoc/mongoc-stream-tls.o mongoc/mongoc-stream.o mongoc/mongoc-uri.o mongoc/mongoc-util.o mongoc/mongoc-write-command.o mongoc/mongoc-write-concern.o mongoc/mongoc-topology-description-apm.o mongoc/mongoc-async.o mongoc/mongoc-async-cmd.o mongoc/mongoc-host-list.o mongoc/mongoc-set.o mongoc/mongoc-server-description.o mongoc/mongoc-topology-description.o mongoc/mongoc-topology.o mongoc/mongoc-topology-scanner.o mongoc/mongoc-version-functions.o mongoc/mongoc-memcmp.o mongoc/mongoc-server-stream.o mongoc/mongoc-find-and-modify.o mongoc/mongoc-read-concern.o mongoc/mongoc-openssl.o mongoc/mongoc-apm.o mongoc/mongoc-crypto.o mongoc/mongoc-crypto-openssl.o mongoc/mongoc-handshake.o mongoc/mongoc-stream-tls-openssl.o mongoc/mongoc-stream-tls-openssl-bio.o mongoc/mongoc-cluster-sasl.o mongoc/mongoc-cmd.o mongoc/mongoc-change-stream.o mongoc/mongoc-client-session.o mongoc/mongoc-cluster-cyrus.o mongoc/mongoc-compression.o mongoc/mongoc-cyrus.o mongoc/mongoc-write-command-legacy.o mongoc/mongoc-linux-distro-scanner.o
+gcc -std=gnu99 -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o mongolite.so bson.o client.o collection.o cursor.o hex.o mongo_log.o reader.o utils.o -Lmongoc -lstatmongoc -Lbson -lstatbson -lsasl2 -lssl -lcrypto -lresolv -lz -L/usr/lib/R/lib -lR
+installing to /usr/local/lib/R/site-library/mongolite/libs
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (mongolite)
+
+The downloaded source packages are in
+	‘/tmp/RtmpYh0Q7X/downloaded_packages’
+> 
+> 
+]0;/srv/shiny-server]0;rstudio@ip-172-31-36-66: /srv/shiny-server[01;32mrstudio@ip-172-31-36-66[00m:[01;34m/srv/shiny-server[00m$ ls
+[0m[01;34mbible_application[0m  [01;34mexcel_binder[0m  [01;36mindex.html[0m  [01;36msample-apps[0m  [01;34mstorms[0m  [01;34mtidy_quant_app[0m
+]0;/srv/shiny-server]0;rstudio@ip-172-31-36-66: /srv/shiny-server[01;32mrstudio@ip-172-31-36-66[00m:[01;34m/srv/shiny-server[00m$ cd ~
+]0;/home/rstudio]0;rstudio@ip-172-31-36-66: ~[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~[00m$ ls
+myPlot.pdf  [0m[01;34mR[0m  [01;35mRplot01.png[0m  [01;35mRplot.png[0m  [01;34mr_projects[0m
+]0;/home/rstudio]0;rstudio@ip-172-31-36-66: ~[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~[00m$ cd ..
+]0;/home]0;rstudio@ip-172-31-36-66: /home[01;32mrstudio@ip-172-31-36-66[00m:[01;34m/home[00m$ 
+]0;/home]0;rstudio@ip-172-31-36-66: /home[01;32mrstudio@ip-172-31-36-66[00m:[01;34m/home[00m$ cd ..
+]0;/]0;rstudio@ip-172-31-36-66: /[01;32mrstudio@ip-172-31-36-66[00m:[01;34m/[00m$ ls
+[0m[01;34mbin[0m   [01;34mhome[0m            [01;34mlib64[0m       [01;34mopt[0m   [01;34msbin[0m  [30;42mtmp[0m      [01;36mvmlinuz.old[0m
+[01;34mboot[0m  [01;36minitrd.img[0m      [01;34mlost+found[0m  [01;34mproc[0m  [01;34msnap[0m  [01;34musr[0m
+[01;34mdev[0m   [01;36minitrd.img.old[0m  [01;34mmedia[0m       [01;34mroot[0m  [01;34msrv[0m   [01;34mvar[0m
+[01;34metc[0m   [01;34mlib[0m             [01;34mmnt[0m         [01;34mrun[0m   [01;34msys[0m   [01;36mvmlinuz[0m
+]0;/]0;rstudio@ip-172-31-36-66: /[01;32mrstudio@ip-172-31-36-66[00m:[01;34m/[00m$ cd home/
+]0;/home]0;rstudio@ip-172-31-36-66: /home[01;32mrstudio@ip-172-31-36-66[00m:[01;34m/home[00m$ ls
+[0m[01;34mrstudio[0m  [01;34mshiny[0m  [01;34mubuntu[0m
+]0;/home]0;rstudio@ip-172-31-36-66: /home[01;32mrstudio@ip-172-31-36-66[00m:[01;34m/home[00m$ cd rstudio
+]0;/home/rstudio]0;rstudio@ip-172-31-36-66: ~[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~[00m$ ls
+myPlot.pdf  [0m[01;34mR[0m  [01;35mRplot01.png[0m  [01;35mRplot.png[0m  [01;34mr_projects[0m
+]0;/home/rstudio]0;rstudio@ip-172-31-36-66: ~[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~[00m$ cd r_projects/
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ ls
+[0m[01;34manimals[0m            [01;34mclimate_data[0m  [34;42mfdRen[0m         [01;34mpredicting_house_prices[0m
+[01;34mbible_application[0m  [01;34mdrentools[0m     [01;34moptimization[0m  [01;34mscripts[0m
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ git clone[K[K[K[K[K[K[K[K[Ksudo git clone git@github.com:fdrennan/drento ols.git
+fatal: destination path 'drentools' already exists and is not an empty directory.
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ cd drentools/l[K
+]0;/home/rstudio/r_projects/drentools]0;rstudio@ip-172-31-36-66: ~/r_projects/drentools[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/drentools[00m$ git pull origin master
+error: cannot run rpostback-askpass: No such file or directory
+Username for 'https://github.com': f
+error: cannot run rpostback-askpass: No such file or directory
+Password for 'https://f@github.com': 
+remote: Invalid username or password.
+fatal: Authentication failed for 'https://github.com/fdrennan/drentools.git/'
+]0;/home/rstudio/r_projects/drentools]0;rstudio@ip-172-31-36-66: ~/r_projects/drentools[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/drentools[00m$ git remote set-url origin git@githu b.com:fdrennan/drentools.git
+]0;/home/rstudio/r_projects/drentools]0;rstudio@ip-172-31-36-66: ~/r_projects/drentools[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/drentools[00m$ git remote set-url origin git@githubb.com:fdrennan/drentools.git[A]0;rstudio@ip-172-31-36-66: ~/r_projects/drentools[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/drentools[00m$ [C[C[C[C[13Ppull origin master
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+The authenticity of host 'github.com (192.30.253.113)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.253.113' (RSA) to the list of known hosts.
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+]0;/home/rstudio/r_projects/drentools]0;rstudio@ip-172-31-36-66: ~/r_projects/drentools[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/drentools[00m$ git pull origin master
+Warning: Permanently added the RSA host key for IP address '192.30.253.112' to the list of known hosts.
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+]0;/home/rstudio/r_projects/drentools]0;rstudio@ip-172-31-36-66: ~/r_projects/drentools[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/drentools[00m$ cd ..
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ ls
+[0m[01;34manimals[0m            [01;34mclimate_data[0m  [34;42mfdRen[0m         [01;34mpredicting_house_prices[0m
+[01;34mbible_application[0m  [01;34mdrentools[0m     [01;34moptimization[0m  [01;34mscripts[0m
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ cd [K[K[Krm -rf drentools
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ cd [K[K[Krm -rf drentoolsls[Kcd ..git pull origin masterremote set-url origin git@github.com:fdrennnan/drentools.git[A]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ [C[C[C[C[23Ppull origin master
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[9Pcd drentools/sudo git clone git@github.com:fdrennan/drentoools.git
+Cloning into 'drentools'...
+The authenticity of host 'github.com (192.30.253.113)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.253.113' (RSA) to the list of known hosts.
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ sudo git clone git@github.com:fdrennan/drentoools.git
+Cloning into 'drentools'...
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ sudo git clone git@github.com:fdrennan/drentoools.git
+Cloning into 'drentools'...
+Warning: Permanently added the RSA host key for IP address '192.30.253.112' to the list of known hosts.
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ sudo git clone git@github.com:fdrennan/drentoools.git
+Cloning into 'drentools'...
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ sudo git clone git@github.com:fdrennan/drentoools.git
+Cloning into 'drentools'...
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ sudo git clone git@github.com:fdrennan/drentoools.git
+Cloning into 'drentools'...
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ sudo git clone git@github.com:fdrennan/drentoools.git
+Cloning into 'drentools'...
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ Cloning into 'drentools'...
+Cloning: command not found
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ Permission denied (publickey).
+bash: syntax error near unexpected token `('
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ fatal: Could not read from remote repository. [A
+fatal:: command not found
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ 
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ Please make sure you have the correct access  rights
+Please: command not found
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ and the repository exists.Please make sure you have the correct access rrights[A]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ fatal: Could not read from remote repository. [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[15PPermission denied (publickey).
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[3PCloning into 'drentools'...sudo git clone git@github.com:fdrennan/drentoools.git[A]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ [29Prm -rf drentools
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[Kcd ..git pull origin masterremote set-url origin git@github.com:fdrennnan/drentools.git[A]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ [C[C[C[C[23Ppull origin master
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cremote set-url origin git@github.com:fdrennnan/drentools.git[A]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ [C[C[C[C[23Ppull origin master
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccd ..[K[3Plsrm -rf drentoolssudo git clone git@github.com:fdrennan/drentoools.git[A]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ [18PCloning into 'drentools'...
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csudo git clone git@github.com:fdrennan/drentoools.git[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit clone git@github.com:fdrennan/drentool[1Ps.git[A]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ [C[C[C[Cgit clone git@github.com:fdrennan/drentools[1P.git[A]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ [C[C[Cgit clone git@github.com:fdrennan/drentools.[1Pgit[A]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ [C[Cgit clone git@github.com:fdrennan/drentools.g[1Pit[A]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ [Cgit clone git@github.com:fdrennan/drentools.gi[1Pt[A]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ 
+
+Cloning into 'drentools'...
+remote: Counting objects: 350, done.[K
+remote: Compressing objects:   6% (1/16)   [Kremote: Compressing objects:  12% (2/16)   [Kremote: Compressing objects:  18% (3/16)   [Kremote: Compressing objects:  25% (4/16)   [Kremote: Compressing objects:  31% (5/16)   [Kremote: Compressing objects:  37% (6/16)   [Kremote: Compressing objects:  43% (7/16)   [Kremote: Compressing objects:  50% (8/16)   [Kremote: Compressing objects:  56% (9/16)   [Kremote: Compressing objects:  62% (10/16)   [Kremote: Compressing objects:  68% (11/16)   [Kremote: Compressing objects:  75% (12/16)   [Kremote: Compressing objects:  81% (13/16)   [Kremote: Compressing objects:  87% (14/16)   [Kremote: Compressing objects:  93% (15/16)   [Kremote: Compressing objects: 100% (16/16)   [Kremote: Compressing objects: 100% (16/16), done.[K
+Receiving objects:   0% (1/350)   Receiving objects:   1% (4/350)   Receiving objects:   2% (7/350)   Receiving objects:   3% (11/350)   Receiving objects:   4% (14/350)   Receiving objects:   5% (18/350)   Receiving objects:   6% (21/350)   Receiving objects:   7% (25/350)   Receiving objects:   8% (28/350)   Receiving objects:   9% (32/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  10% (35/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  11% (39/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  12% (42/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  13% (46/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  14% (49/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  15% (53/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  16% (56/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  17% (60/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  18% (63/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  19% (67/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  20% (70/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  21% (74/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  22% (77/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  23% (81/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  24% (84/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  25% (88/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  26% (91/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  27% (95/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  28% (98/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  29% (102/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  30% (105/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  31% (109/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  32% (112/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  33% (116/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  34% (119/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  35% (123/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  36% (126/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  37% (130/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  38% (133/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  39% (137/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  40% (140/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  41% (144/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  42% (147/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  43% (151/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  44% (154/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  45% (158/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  46% (161/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  47% (165/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  48% (168/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  49% (172/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  50% (175/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  51% (179/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  52% (182/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  53% (186/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  54% (189/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  55% (193/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  56% (196/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  57% (200/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  58% (203/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  59% (207/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  60% (210/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  61% (214/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  62% (217/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  63% (221/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  64% (224/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  65% (228/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  66% (231/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  67% (235/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  68% (238/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  69% (242/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  70% (245/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  71% (249/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  72% (252/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  73% (256/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  74% (259/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  75% (263/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  76% (266/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  77% (270/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  78% (273/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  79% (277/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  80% (280/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  81% (284/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  82% (287/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  83% (291/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  84% (294/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  85% (298/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  86% (301/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  87% (305/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  88% (308/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  89% (312/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  90% (315/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  91% (319/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  92% (322/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  93% (326/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  94% (329/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  95% (333/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  96% (336/350), 9.72 MiB | 19.35 MiB/s   Receiving objects:  96% (339/350), 21.32 MiB | 21.27 MiB/s   Receiving objects:  97% (340/350), 21.32 MiB | 21.27 MiB/s   Receiving objects:  98% (343/350), 21.32 MiB | 21.27 MiB/s   Receiving objects:  99% (347/350), 21.32 MiB | 21.27 MiB/s   remote: Total 350 (delta 7), reused 17 (delta 5), pack-reused 328[K
+Receiving objects: 100% (350/350), 21.32 MiB | 21.27 MiB/s   Receiving objects: 100% (350/350), 24.54 MiB | 21.27 MiB/s, done.
+Resolving deltas:   0% (0/28)   Resolving deltas:   7% (2/28)   Resolving deltas:  14% (4/28)   Resolving deltas:  28% (8/28)   Resolving deltas:  32% (9/28)   Resolving deltas:  50% (14/28)   Resolving deltas:  53% (15/28)   Resolving deltas:  57% (16/28)   Resolving deltas:  60% (17/28)   Resolving deltas:  67% (19/28)   Resolving deltas:  71% (20/28)   Resolving deltas:  75% (21/28)   Resolving deltas:  82% (23/28)   Resolving deltas:  85% (24/28)   Resolving deltas:  89% (25/28)   Resolving deltas:  92% (26/28)   Resolving deltas: 100% (28/28)   Resolving deltas: 100% (28/28), done.
+Checking connectivity... done.
+[K]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ ls
+[0m[01;34manimals[0m            [01;34mclimate_data[0m  [34;42mfdRen[0m         [01;34mpredicting_house_prices[0m  update_package.sh
+[01;34mbible_application[0m  [34;42mdrentools[0m     [01;34moptimization[0m  [01;34mscripts[0m
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ echo "# data_scripts" >> README.md
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ git init
+Initialized empty Git repository in /home/rstudio/r_projects/.git/
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ git add README.md
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ git commit -m "first commit"
+[master (root-commit) 545bd29] first commit
+ Committer: Freddy <rstudio@ip-172-31-36-66.us-east-2.compute.internal>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ git remote add origin git@github.com:fdrennan/data_scripts.git
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ git push -u origin master
+Counting objects: 3, done.
+Writing objects:  33% (1/3)   Writing objects:  66% (2/3)   Writing objects: 100% (3/3)   Writing objects: 100% (3/3), 247 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To git@github.com:fdrennan/data_scripts.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ git add --all
+git commit -m 'first commit']0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ git commit -m 'first commit'
+[master 27647da] first commit
+ Committer: Freddy <rstudio@ip-172-31-36-66.us-east-2.compute.internal>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 311 files changed, 40124 insertions(+)
+ create mode 100644 animals/.RData
+ create mode 100644 animals/.Rhistory
+ create mode 100644 animals/.Rproj.user/E35F6CEA/console06/INDEX001
+ create mode 100644 animals/.Rproj.user/E35F6CEA/pcs/files-pane.pper
+ create mode 100644 animals/.Rproj.user/E35F6CEA/pcs/source-pane.pper
+ create mode 100644 animals/.Rproj.user/E35F6CEA/pcs/windowlayoutstate.pper
+ create mode 100644 animals/.Rproj.user/E35F6CEA/pcs/workbench-pane.pper
+ create mode 100644 animals/.Rproj.user/E35F6CEA/persistent-state
+ create mode 100644 animals/.Rproj.user/E35F6CEA/saved_source_markers
+ create mode 100644 animals/.Rproj.user/E35F6CEA/sources/prop/3F502830
+ create mode 100644 animals/.Rproj.user/E35F6CEA/sources/prop/INDEX
+ create mode 100644 animals/.Rproj.user/E35F6CEA/sources/s-2a27d88d/299C6CF6
+ create mode 100644 animals/.Rproj.user/E35F6CEA/sources/s-2a27d88d/299C6CF6-contents
+ create mode 100644 animals/.Rproj.user/E35F6CEA/sources/s-2a27d88d/lock_file
+ create mode 100644 animals/.Rproj.user/shared/notebooks/F2AD1A3C-animal_shelter/1/E35F6CEA2a27d88d/chunks.json
+ create mode 100644 animals/.Rproj.user/shared/notebooks/F2AD1A3C-animal_shelter/1/s/c1nskjo74wfnt/000002.csv
+ create mode 100644 animals/.Rproj.user/shared/notebooks/F2AD1A3C-animal_shelter/1/s/c1nskjo74wfnt/000003.error
+ create mode 100644 animals/.Rproj.user/shared/notebooks/F2AD1A3C-animal_shelter/1/s/cgzy8vaor3y4a/00000c.metadata
+ create mode 100644 animals/.Rproj.user/shared/notebooks/F2AD1A3C-animal_shelter/1/s/cgzy8vaor3y4a/00000c.rdf
+ create mode 100644 animals/.Rproj.user/shared/notebooks/F2AD1A3C-animal_shelter/1/s/chunks.json
+ create mode 100644 animals/.Rproj.user/shared/notebooks/F2AD1A3C-animal_shelter/1/s/cn9vcpfwyr2wn/000004.csv
+ create mode 100644 animals/.Rproj.user/shared/notebooks/patch-chunk-names
+ create mode 100644 animals/.Rproj.user/shared/notebooks/paths
+ create mode 100644 animals/animal_shelter.Rmd
+ create mode 100644 animals/animal_shelter.nb.html
+ create mode 100644 animals/animals.Rproj
+ create mode 100644 animals/animals.csv
+ create mode 160000 bible_application
+ create mode 100644 climate_data/.RData
+ create mode 100644 climate_data/.Rhistory
+ create mode 100644 climate_data/.Rproj.user/E35F6CEA/console06/2A5B7F2A
+ create mode 100644 climate_data/.Rproj.user/E35F6CEA/console06/2A5B7F2A.env
+ create mode 100644 climate_data/.Rproj.user/E35F6CEA/console06/INDEX001
+ create mode 100644 climate_data/.Rproj.user/E35F6CEA/pcs/files-pane.pper
+ create mode 100644 climate_data/.Rproj.user/E35F6CEA/pcs/source-pane.pper
+ create mode 100644 climate_data/.Rproj.user/E35F6CEA/pcs/windowlayoutstate.pper
+ create mode 100644 climate_data/.Rproj.user/E35F6CEA/pcs/workbench-pane.pper
+ create mode 100644 climate_data/.Rproj.user/E35F6CEA/persistent-state
+ create mode 100644 climate_data/.Rproj.user/E35F6CEA/saved_source_markers
+ create mode 100644 climate_data/.Rproj.user/E35F6CEA/sources/per/u/779B55D0
+ create mode 100644 climate_data/.Rproj.user/E35F6CEA/sources/per/u/779B55D0-contents
+ create mode 100644 climate_data/.Rproj.user/shared/notebooks/patch-chunk-names
+ create mode 100644 climate_data/climate_data.Rproj
+ create mode 160000 drentools
+ create mode 160000 fdRen
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/console06/AD304C3D
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/console06/AD304C3D.env
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/console06/INDEX001
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/pcs/debug-breakpoints.pper
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/pcs/files-pane.pper
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/pcs/source-pane.pper
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/pcs/windowlayoutstate.pper
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/pcs/workbench-pane.pper
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/persistent-state
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/saved_source_markers
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/sources/prop/12E6BAC8
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/sources/prop/76991A20
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/sources/prop/874D57A0
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/sources/prop/INDEX
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/sources/s-2a27d88d/1428DF87-contents
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/sources/s-2a27d88d/64809729-contents
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/sources/s-2a27d88d/A830426-contents
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/sources/s-2a27d88d/B4F4F357
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/sources/s-2a27d88d/B4F4F357-contents
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/sources/s-2a27d88d/BFADA6E2
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/sources/s-2a27d88d/BFADA6E2-contents
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/sources/s-2a27d88d/CFBB03C9-contents
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/sources/s-2a27d88d/DEF390CC
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/sources/s-2a27d88d/DEF390CC-contents
+ create mode 100644 optimization/.Rproj.user/E35F6CEA/sources/s-2a27d88d/lock_file
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/2BA6CDA4-patients/1/E35F6CEA2a27d88d/ccdk01rs78co0/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/2BA6CDA4-patients/1/E35F6CEA2a27d88d/chunks.json
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/2BA6CDA4-patients/1/E35F6CEA2a27d88d/ck5r7zn75wy61/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/2BA6CDA4-patients/1/s/ccdk01rs78co0/00000a.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/2BA6CDA4-patients/1/s/chunks.json
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/2BA6CDA4-patients/1/s/ck5r7zn75wy61/000006.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/E35F6CEA2a27d88d/c0gv4b02gfyqs/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/E35F6CEA2a27d88d/c5krj73umnccn/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/E35F6CEA2a27d88d/c5krj73umnccn/000003.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/E35F6CEA2a27d88d/c5krj73umnccn/000003.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/E35F6CEA2a27d88d/c5krj73umnccn/000004.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/E35F6CEA2a27d88d/c8x0temtuv2wm/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/E35F6CEA2a27d88d/c9exo2ahug66p/000007.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/E35F6CEA2a27d88d/c9exo2ahug66p/000008.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/E35F6CEA2a27d88d/c9exo2ahug66p/000008.png
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/E35F6CEA2a27d88d/c9exo2ahug66p/000008.snapshot
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/E35F6CEA2a27d88d/c9exo2ahug66p/000009.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/E35F6CEA2a27d88d/c9exo2ahug66p/00000a.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/E35F6CEA2a27d88d/c9exo2ahug66p/00000a.png
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/E35F6CEA2a27d88d/c9exo2ahug66p/00000a.snapshot
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/E35F6CEA2a27d88d/chunks.json
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/E35F6CEA2a27d88d/cmz3wc2ni4hy1/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/c0gv4b02gfyqs/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/c5krj73umnccn/000008.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/c5krj73umnccn/000009.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/c5krj73umnccn/000009.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/c5krj73umnccn/00000a.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/c8x0temtuv2wm/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/c9exo2ahug66p/00000c.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/c9exo2ahug66p/00000d.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/c9exo2ahug66p/00000d.png
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/c9exo2ahug66p/00000d.snapshot
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/c9exo2ahug66p/00000e.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/c9exo2ahug66p/00000f.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/c9exo2ahug66p/00000f.png
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/c9exo2ahug66p/00000f.snapshot
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/c9q7nlto6bp31/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/ch551xc30bcrj/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/chunks.json
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/cmz3wc2ni4hy1/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/coqgfxwyq5exc/000008.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/coqgfxwyq5exc/000009.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/coqgfxwyq5exc/000009.png
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/coqgfxwyq5exc/000009.snapshot
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/ct1draoq4slkr/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/cul49wxhpws60/000004.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/cul49wxhpws60/000005.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/cul49wxhpws60/000005.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/68AAD22B-integer_index/1/s/cyj7qfizlk7sq/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/E35F6CEA2a27d88d/c1lznix2mh577/000006.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/E35F6CEA2a27d88d/c1lznix2mh577/000007.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/E35F6CEA2a27d88d/c1lznix2mh577/000007.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/E35F6CEA2a27d88d/c1lznix2mh577/000008.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/E35F6CEA2a27d88d/c1lznix2mh577/000009.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/E35F6CEA2a27d88d/c1lznix2mh577/000009.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/E35F6CEA2a27d88d/chunks.json
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/c0ng5cfuxn0cm/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/c1lznix2mh577/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/c1lznix2mh577/000003.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/c1lznix2mh577/000003.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/c1lznix2mh577/000004.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/c1lznix2mh577/000005.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/c1lznix2mh577/000005.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/c53wsoahgvr6r/000002.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/c53wsoahgvr6r/000002.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/c8qaxxqb8x0tk/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/c8qaxxqb8x0tk/000003.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/c8qaxxqb8x0tk/000003.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/c8qaxxqb8x0tk/000004.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/c8qaxxqb8x0tk/000005.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/c8qaxxqb8x0tk/000005.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cbdgss7uyu1q8/000002.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cbdgss7uyu1q8/000002.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cdjcczd5jno54/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/ch8ait4q8li40/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/ch8ait4q8li40/000003.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/ch8ait4q8li40/000003.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/ch8ait4q8li40/000004.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/ch8ait4q8li40/000005.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/ch8ait4q8li40/000005.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/chunks.json
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cie5rdsiy0y4r/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cie5rdsiy0y4r/000003.error
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/clen2pvlyeiqi/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/clen2pvlyeiqi/000003.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/clen2pvlyeiqi/000003.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/clen2pvlyeiqi/000004.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/clen2pvlyeiqi/000005.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/clen2pvlyeiqi/000005.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/clzldo2e2zabb/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/clzldo2e2zabb/000003.error
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cmb3fru00h98o/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cmb3fru00h98o/000003.error
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cmb3fru00h98o/000004.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cmb3fru00h98o/000005.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cmb3fru00h98o/000005.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cmb3fru00h98o/000006.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cmb3fru00h98o/000007.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cmb3fru00h98o/000007.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cmb3fru00h98o/000008.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cmb3fru00h98o/000009.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cmb3fru00h98o/000009.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cmb3fru00h98o/00000a.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cmb3fru00h98o/00000b.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cmb3fru00h98o/00000b.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cmb3fru00h98o/00000c.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cnvi66nolsb36/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cpo3o0yi2p6ne/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cpo3o0yi2p6ne/000003.error
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cshzssvxfffet/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cshzssvxfffet/000003.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cshzssvxfffet/000003.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cshzssvxfffet/000004.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cshzssvxfffet/000005.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cshzssvxfffet/000005.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/ctzkr0n4qnclx/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/ctzkr0n4qnclx/000003.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/ctzkr0n4qnclx/000003.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/ctzkr0n4qnclx/000004.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/ctzkr0n4qnclx/000005.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/ctzkr0n4qnclx/000005.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cvsyv0lr7z6uq/000002.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cvsyv0lr7z6uq/000003.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cvsyv0lr7z6uq/000003.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cvsyv0lr7z6uq/000004.csv
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cvsyv0lr7z6uq/000005.metadata
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/cvsyv0lr7z6uq/000005.rdf
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/lib/datatables-binding-0.2/datatables.js
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/lib/dt-core-1.10.12/css/jquery.dataTables.extra.css
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/lib/dt-core-1.10.12/css/jquery.dataTables.min.css
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/lib/dt-core-1.10.12/js/jquery.dataTables.min.js
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/lib/htmlwidgets-0.9/htmlwidgets.js
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/lib/jquery-1.12.4/LICENSE.txt
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/D25CFC42-factor_selector/1/s/lib/jquery-1.12.4/jquery.min.js
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/patch-chunk-names
+ create mode 100644 optimization/.Rproj.user/shared/notebooks/paths
+ create mode 100644 optimization/factor_selector.Rmd
+ create mode 100644 optimization/integer_index.Rmd
+ create mode 100644 optimization/integer_index.nb.html
+ create mode 100644 optimization/optimization.Rproj
+ create mode 100644 optimization/patients.Rmd
+ create mode 100644 optimization/patients.nb.html
+ create mode 100644 optimization/plumber.R
+ create mode 100644 optimization/stock_prices.rda
+ create mode 100644 predicting_house_prices/.RData
+ create mode 100644 predicting_house_prices/.Rhistory
+ create mode 100644 predicting_house_prices/.Rproj.user/E35F6CEA/console06/INDEX001
+ create mode 100644 predicting_house_prices/.Rproj.user/E35F6CEA/pcs/files-pane.pper
+ create mode 100644 predicting_house_prices/.Rproj.user/E35F6CEA/pcs/source-pane.pper
+ create mode 100644 predicting_house_prices/.Rproj.user/E35F6CEA/pcs/windowlayoutstate.pper
+ create mode 100644 predicting_house_prices/.Rproj.user/E35F6CEA/pcs/workbench-pane.pper
+ create mode 100644 predicting_house_prices/.Rproj.user/E35F6CEA/saved_source_markers
+ create mode 100644 predicting_house_prices/.Rproj.user/E35F6CEA/sources/prop/C13E29CB
+ create mode 100644 predicting_house_prices/.Rproj.user/E35F6CEA/sources/prop/INDEX
+ create mode 100644 predicting_house_prices/.Rproj.user/E35F6CEA/sources/s-2a27d88d/4CC8F660
+ create mode 100644 predicting_house_prices/.Rproj.user/E35F6CEA/sources/s-2a27d88d/4CC8F660-contents
+ create mode 100644 predicting_house_prices/.Rproj.user/E35F6CEA/sources/s-2a27d88d/lock_file
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/E35F6CEA2a27d88d/chunks.json
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/c297wr6nwkihj/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/c9efwt6a53v7r/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cefw99gx3q6ga/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/ceiet4todn2d4/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cet7jxq4dzqj8/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cg5azim7gbri8/000008.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/chunks.json
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/ciicjc8wy181n/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cinvsasn9up0p/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cjvfish4i499a/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/ck6p7xmmado02/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cku0aub5mhav8/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cmmej0tq6rqv3/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cmtvps2t11vvp/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cmtvps2t11vvp/000003.metadata
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cmtvps2t11vvp/000003.png
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cmtvps2t11vvp/000003.snapshot
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cmtvps2t11vvp/000004.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cmtvps2t11vvp/000005.metadata
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cmtvps2t11vvp/000005.png
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cmtvps2t11vvp/000005.snapshot
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cmtvps2t11vvp/000006.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cmtvps2t11vvp/000007.metadata
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cmtvps2t11vvp/000007.png
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cmtvps2t11vvp/000007.snapshot
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cnjdlojgb0pdn/000004.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cnjdlojgb0pdn/000005.html
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cnjdlojgb0pdn/000005.json
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cnjdlojgb0pdn/000005.metadata
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cp23jd1zwlr7k/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cp4460785vy0t/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/crfna9vs0llah/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cvp251iz1lte8/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cvxib7cy8j749/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/cwgrauuk89395/000002.csv
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/lib/datatables-binding-0.2/datatables.js
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/lib/dt-core-1.10.12/css/jquery.dataTables.extra.css
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/lib/dt-core-1.10.12/css/jquery.dataTables.min.css
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/lib/dt-core-1.10.12/js/jquery.dataTables.min.js
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/lib/htmlwidgets-0.9/htmlwidgets.js
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/lib/jquery-1.12.4/LICENSE.txt
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/90377D9E-house_prices/1/s/lib/jquery-1.12.4/jquery.min.js
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/patch-chunk-names
+ create mode 100644 predicting_house_prices/.Rproj.user/shared/notebooks/paths
+ create mode 100644 predicting_house_prices/house_prices.Rmd
+ create mode 100644 predicting_house_prices/predicting_house_prices.Rproj
+ create mode 100644 scripts/.RData
+ create mode 100644 scripts/.Rhistory
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/console06/1312939E
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/console06/1312939E.env
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/console06/INDEX001
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/pcs/debug-breakpoints.pper
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/pcs/files-pane.pper
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/pcs/source-pane.pper
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/pcs/windowlayoutstate.pper
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/pcs/workbench-pane.pper
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/persistent-state
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/saved_source_markers
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/sources/prop/76A96327
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/sources/prop/7778876B
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/sources/prop/97F6D098
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/sources/prop/B040EF4F
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/sources/prop/B23AFD38
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/sources/prop/INDEX
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/sources/s-2a27d88d/6D32B6D6
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/sources/s-2a27d88d/6D32B6D6-contents
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/sources/s-2a27d88d/7C9F528D
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/sources/s-2a27d88d/7C9F528D-contents
+ create mode 100644 scripts/.Rproj.user/E35F6CEA/sources/s-2a27d88d/lock_file
+ create mode 100644 scripts/.Rproj.user/shared/notebooks/patch-chunk-names
+ create mode 100644 scripts/.Rproj.user/shared/notebooks/paths
+ create mode 100644 scripts/.gitignore
+ create mode 100644 scripts/email.R
+ create mode 100644 scripts/get_tweets.R
+ create mode 100644 scripts/myPlot.jpg
+ create mode 100644 scripts/myPlot.pdf
+ create mode 100644 scripts/save_weather.R
+ create mode 100644 scripts/save_weather_backup.R
+ create mode 100644 scripts/save_weather_new.R
+ create mode 100644 scripts/scripts.Rproj
+ create mode 100644 scripts/store_tweets.sh
+ create mode 100644 scripts/store_weather.sh
+ create mode 100644 update_package.sh
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ git push origin master
+Counting objects: 357, done.
+Compressing objects:   0% (1/290)   Compressing objects:   1% (3/290)   Compressing objects:   2% (6/290)   Compressing objects:   3% (9/290)   Compressing objects:   4% (12/290)   Compressing objects:   5% (15/290)   Compressing objects:   6% (18/290)   Compressing objects:   7% (21/290)   Compressing objects:   8% (24/290)   Compressing objects:   9% (27/290)   Compressing objects:  10% (29/290)   Compressing objects:  11% (32/290)   Compressing objects:  12% (35/290)   Compressing objects:  13% (38/290)   Compressing objects:  14% (41/290)   Compressing objects:  15% (44/290)   Compressing objects:  16% (47/290)   Compressing objects:  17% (50/290)   Compressing objects:  18% (53/290)   Compressing objects:  19% (56/290)   Compressing objects:  20% (58/290)   Compressing objects:  21% (61/290)   Compressing objects:  22% (64/290)   Compressing objects:  23% (67/290)   Compressing objects:  24% (70/290)   Compressing objects:  25% (73/290)   Compressing objects:  26% (76/290)   Compressing objects:  27% (79/290)   Compressing objects:  28% (82/290)   Compressing objects:  29% (85/290)   Compressing objects:  30% (87/290)   Compressing objects:  31% (90/290)   Compressing objects:  32% (93/290)   Compressing objects:  33% (96/290)   Compressing objects:  34% (99/290)   Compressing objects:  35% (102/290)   Compressing objects:  36% (105/290)   Compressing objects:  37% (108/290)   Compressing objects:  38% (111/290)   Compressing objects:  39% (114/290)   Compressing objects:  40% (116/290)   Compressing objects:  41% (119/290)   Compressing objects:  42% (122/290)   Compressing objects:  43% (125/290)   Compressing objects:  44% (128/290)   Compressing objects:  45% (131/290)   Compressing objects:  46% (134/290)   Compressing objects:  47% (137/290)   Compressing objects:  48% (140/290)   Compressing objects:  49% (143/290)   Compressing objects:  50% (145/290)   Compressing objects:  51% (148/290)   Compressing objects:  52% (151/290)   Compressing objects:  53% (154/290)   Compressing objects:  54% (157/290)   Compressing objects:  55% (160/290)   Compressing objects:  56% (163/290)   Compressing objects:  57% (166/290)   Compressing objects:  58% (169/290)   Compressing objects:  59% (172/290)   Compressing objects:  60% (174/290)   Compressing objects:  60% (175/290)   Compressing objects:  61% (177/290)   Compressing objects:  62% (180/290)   Compressing objects:  63% (183/290)   Compressing objects:  64% (186/290)   Compressing objects:  65% (189/290)   Compressing objects:  66% (192/290)   Compressing objects:  67% (195/290)   Compressing objects:  68% (198/290)   Compressing objects:  69% (201/290)   Compressing objects:  70% (203/290)   Compressing objects:  71% (206/290)   Compressing objects:  72% (209/290)   Compressing objects:  73% (212/290)   Compressing objects:  74% (215/290)   Compressing objects:  75% (218/290)   Compressing objects:  76% (221/290)   Compressing objects:  77% (224/290)   Compressing objects:  78% (227/290)   Compressing objects:  79% (230/290)   Compressing objects:  80% (232/290)   Compressing objects:  81% (235/290)   Compressing objects:  82% (238/290)   Compressing objects:  83% (241/290)   Compressing objects:  84% (244/290)   Compressing objects:  85% (247/290)   Compressing objects:  86% (250/290)   Compressing objects:  87% (253/290)   Compressing objects:  88% (256/290)   Compressing objects:  89% (259/290)   Compressing objects:  90% (261/290)   Compressing objects:  91% (264/290)   Compressing objects:  92% (267/290)   Compressing objects:  93% (270/290)   Compressing objects:  94% (273/290)   Compressing objects:  95% (276/290)   Compressing objects:  96% (279/290)   Compressing objects:  97% (282/290)   Compressing objects:  98% (285/290)   Compressing objects:  99% (288/290)   Compressing objects: 100% (290/290)   Compressing objects: 100% (290/290), done.
+Writing objects:   0% (1/357)   Writing objects:   1% (4/357)   Writing objects:   2% (8/357)   Writing objects:   3% (12/357)   Writing objects:   4% (15/357)   Writing objects:   5% (18/357)   Writing objects:   6% (23/357)   Writing objects:   7% (25/357)   Writing objects:   8% (29/357)   Writing objects:   9% (35/357)   Writing objects:  10% (36/357)   Writing objects:  11% (40/357)   Writing objects:  12% (43/357)   Writing objects:  13% (48/357)   Writing objects:  14% (50/357)   Writing objects:  15% (54/357)   Writing objects:  16% (58/357)   Writing objects:  17% (61/357)   Writing objects:  18% (65/357)   Writing objects:  19% (68/357)   Writing objects:  20% (72/357)   Writing objects:  21% (75/357)   Writing objects:  22% (79/357)   Writing objects:  23% (83/357)   Writing objects:  24% (86/357)   Writing objects:  25% (90/357)   Writing objects:  26% (93/357)   Writing objects:  27% (97/357)   Writing objects:  28% (100/357)   Writing objects:  29% (104/357)   Writing objects:  30% (108/357)   Writing objects:  31% (111/357)   Writing objects:  32% (115/357)   Writing objects:  33% (118/357)   Writing objects:  34% (123/357)   Writing objects:  35% (125/357)   Writing objects:  36% (129/357)   Writing objects:  37% (133/357)   Writing objects:  38% (137/357)   Writing objects:  39% (140/357)   Writing objects:  40% (143/357)   Writing objects:  41% (147/357)   Writing objects:  42% (150/357)   Writing objects:  43% (154/357)   Writing objects:  44% (158/357)   Writing objects:  45% (161/357)   Writing objects:  46% (165/357)   Writing objects:  47% (168/357)   Writing objects:  48% (172/357)   Writing objects:  49% (175/357)   Writing objects:  50% (179/357)   Writing objects:  51% (183/357)   Writing objects:  52% (186/357)   Writing objects:  53% (190/357)   Writing objects:  54% (194/357)   Writing objects:  55% (197/357)   Writing objects:  56% (200/357)   Writing objects:  57% (204/357)   Writing objects:  58% (208/357)   Writing objects:  59% (211/357)   Writing objects:  60% (215/357)   Writing objects:  61% (218/357)   Writing objects:  62% (222/357)   Writing objects:  63% (225/357)   Writing objects:  64% (229/357)   Writing objects:  65% (233/357)   Writing objects:  66% (236/357)   Writing objects:  67% (240/357)   Writing objects:  68% (243/357)   Writing objects:  69% (247/357)   Writing objects:  69% (248/357), 1.69 MiB | 260.00 KiB/s   Writing objects:  69% (248/357), 9.40 MiB | 1.32 MiB/s   Writing objects:  69% (249/357), 21.05 MiB | 2.76 MiB/s   Writing objects:  70% (250/357), 21.05 MiB | 2.76 MiB/s   Writing objects:  70% (250/357), 31.95 MiB | 2.86 MiB/s   Writing objects:  70% (250/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  71% (254/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  72% (258/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  73% (261/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  74% (265/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  75% (268/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  76% (272/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  77% (275/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  78% (279/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  79% (283/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  80% (286/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  81% (290/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  82% (293/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  83% (297/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  84% (300/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  85% (304/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  86% (308/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  87% (311/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  88% (315/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  89% (318/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  90% (322/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  91% (325/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  92% (329/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  93% (333/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  94% (336/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  95% (340/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  96% (343/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  97% (347/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  98% (350/357), 49.86 MiB | 4.09 MiB/s   Writing objects:  99% (354/357), 49.86 MiB | 4.09 MiB/s   Writing objects: 100% (357/357), 49.86 MiB | 4.09 MiB/s   Writing objects: 100% (357/357), 54.99 MiB | 4.09 MiB/s, done.
+Total 357 (delta 73), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/73)   [Kremote: Resolving deltas:   1% (1/73)   [Kremote: Resolving deltas:   6% (5/73)   [Kremote: Resolving deltas:  12% (9/73)   [Kremote: Resolving deltas:  13% (10/73)   [Kremote: Resolving deltas:  26% (19/73)   [Kremote: Resolving deltas:  34% (25/73)   [Kremote: Resolving deltas:  38% (28/73)   [Kremote: Resolving deltas:  41% (30/73)   [Kremote: Resolving deltas:  42% (31/73)   [Kremote: Resolving deltas:  45% (33/73)   [Kremote: Resolving deltas:  47% (35/73)   [Kremote: Resolving deltas:  49% (36/73)   [Kremote: Resolving deltas:  50% (37/73)   [Kremote: Resolving deltas:  53% (39/73)   [Kremote: Resolving deltas:  54% (40/73)   [Kremote: Resolving deltas:  56% (41/73)   [Kremote: Resolving deltas:  60% (44/73)   [Kremote: Resolving deltas:  64% (47/73)   [Kremote: Resolving deltas:  67% (49/73)   [Kremote: Resolving deltas:  76% (56/73)   [Kremote: Resolving deltas:  78% (57/73)   [Kremote: Resolving deltas:  87% (64/73)   [Kremote: Resolving deltas:  89% (65/73)   [Kremote: Resolving deltas:  95% (70/73)   [Kremote: Resolving deltas:  97% (71/73)   [Kremote: Resolving deltas:  98% (72/73)   [Kremote: Resolving deltas: 100% (73/73)   [Kremote: Resolving deltas: 100% (73/73), done.[K
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.[K
+remote: error: Trace: b07036dc6ac12251fd63eb9f0a6d67a4[K
+remote: error: See http://git.io/iEPt8g for more information.[K
+remote: error: File optimization/stock_prices.rda is 100.29 MB; this exceeds GitHub's file size limit of 100.00 MB[K
+remote: error: File predicting_house_prices/.RData is 124.42 MB; this exceeds GitHub's file size limit of 100.00 MB[K
+To git@github.com:fdrennan/data_scripts.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'git@github.com:fdrennan/data_scripts.git'
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ [K]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ ls
+[0m[01;34manimals[0m            [01;34mclimate_data[0m  [34;42mfdRen[0m         [01;34mpredicting_house_prices[0m  [01;34mscripts[0m
+[01;34mbible_application[0m  [34;42mdrentools[0m     [01;34moptimization[0m  README.md                update_package.sh
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ cd scripts/
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ echo "# data_scripts" >> README.md
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ git init
+Initialized empty Git repository in /home/rstudio/r_projects/scripts/.git/
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ git add README.md
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ git commit -m "first commit"
+[master (root-commit) bf0b5ae] first commit
+ Committer: Freddy <rstudio@ip-172-31-36-66.us-east-2.compute.internal>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ git remote add origin git@github.com:fdrennan/data_scripts.git
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ git push -u origin master
+To git@github.com:fdrennan/data_scripts.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@github.com:fdrennan/data_scripts.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ ls
+email.R       [0m[01;35mmyPlot.jpg[0m  README.md              save_weather_new.R  scripts.Rproj    store_weather.sh
+get_tweets.R  myPlot.pdf  save_weather_backup.R  save_weather.R      store_tweets.sh
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ cd ...[K
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ ls
+[0m[01;34manimals[0m            [01;34mclimate_data[0m  [34;42mfdRen[0m         [01;34mpredicting_house_prices[0m  [01;34mscripts[0m
+[01;34mbible_application[0m  [34;42mdrentools[0m     [01;34moptimization[0m  README.md                update_package.sh
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ ls -la
+total 52
+drwxr-xr-x 11 rstudio rstudio 4096 Jan 19 02:54 [0m[01;34m.[0m
+drwxr-xr-x  7 rstudio rstudio 4096 Jan 18 22:00 [01;34m..[0m
+drwxr-xr-x  3 rstudio rstudio 4096 Nov 30 17:08 [01;34manimals[0m
+drwxr-xr-x  4 root    root    4096 Oct 14 14:00 [01;34mbible_application[0m
+drwxr-xr-x  3 rstudio rstudio 4096 Oct 14 19:09 [01;34mclimate_data[0m
+drwxrwxrwx  8 rstudio rstudio 4096 Jan 19 02:43 [34;42mdrentools[0m
+drwxrwxrwx  7 root    root    4096 Oct 14 20:30 [34;42mfdRen[0m
+drwxr-xr-x  8 rstudio rstudio 4096 Jan 19 02:55 [01;34m.git[0m
+drwxr-xr-x  3 rstudio rstudio 4096 Dec 13 16:32 [01;34moptimization[0m
+drwxr-xr-x  3 rstudio rstudio 4096 Oct 14 15:49 [01;34mpredicting_house_prices[0m
+-rw-r--r--  1 rstudio rstudio   15 Jan 19 02:54 README.md
+drwxr-xr-x  4 rstudio rstudio 4096 Jan 19 02:55 [01;34mscripts[0m
+-rw-r--r--  1 rstudio rstudio   83 Jan 19 01:18 update_package.sh
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ rm .h[Kgit/
+rm: cannot remove '.git/': Is a directory
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ sudo rm .git/
+[sudo] password for rstudio: 
+Sorry, try again.
+[sudo] password for rstudio: 
+rm: cannot remove '.git/': Is a directory
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ sudo rm [K -r .git
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ ls
+[0m[01;34manimals[0m            [01;34mclimate_data[0m  [34;42mfdRen[0m         [01;34mpredicting_house_prices[0m  [01;34mscripts[0m
+[01;34mbible_application[0m  [34;42mdrentools[0m     [01;34moptimization[0m  README.md                update_package.sh
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ ls -la
+total 48
+drwxr-xr-x 10 rstudio rstudio 4096 Jan 19 02:56 [0m[01;34m.[0m
+drwxr-xr-x  7 rstudio rstudio 4096 Jan 18 22:00 [01;34m..[0m
+drwxr-xr-x  3 rstudio rstudio 4096 Nov 30 17:08 [01;34manimals[0m
+drwxr-xr-x  4 root    root    4096 Oct 14 14:00 [01;34mbible_application[0m
+drwxr-xr-x  3 rstudio rstudio 4096 Oct 14 19:09 [01;34mclimate_data[0m
+drwxrwxrwx  8 rstudio rstudio 4096 Jan 19 02:43 [34;42mdrentools[0m
+drwxrwxrwx  7 root    root    4096 Oct 14 20:30 [34;42mfdRen[0m
+drwxr-xr-x  3 rstudio rstudio 4096 Dec 13 16:32 [01;34moptimization[0m
+drwxr-xr-x  3 rstudio rstudio 4096 Oct 14 15:49 [01;34mpredicting_house_prices[0m
+-rw-r--r--  1 rstudio rstudio   15 Jan 19 02:54 README.md
+drwxr-xr-x  4 rstudio rstudio 4096 Jan 19 02:55 [01;34mscripts[0m
+-rw-r--r--  1 rstudio rstudio   83 Jan 19 01:18 update_package.sh
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ rm [K[K[Ksudo rm README.md 
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ ls
+[0m[01;34manimals[0m  [01;34mbible_application[0m  [01;34mclimate_data[0m  [34;42mdrentools[0m  [34;42mfdRen[0m  [01;34moptimization[0m  [01;34mpredicting_house_prices[0m  [01;34mscripts[0m  update_package.sh
+]0;/home/rstudio/r_projects]0;rstudio@ip-172-31-36-66: ~/r_projects[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects[00m$ cd scripts/
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ ls
+email.R       [0m[01;35mmyPlot.jpg[0m  README.md              save_weather_new.R  scripts.Rproj    store_weather.sh
+get_tweets.R  myPlot.pdf  save_weather_backup.R  save_weather.R      store_tweets.sh
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ echo "# data_scripts" >> README.md
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ git init
+Reinitialized existing Git repository in /home/rstudio/r_projects/scripts/.git/
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ git add README.md
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ git commit -m "first commit"
+[master 8672f55] first commit
+ Committer: Freddy <rstudio@ip-172-31-36-66.us-east-2.compute.internal>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ git remote add origin git@github.com:fdrennan/data_scripts.git
+fatal: remote origin already exists.
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ git push -u origin master
+To git@github.com:fdrennan/data_scripts.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@github.com:fdrennan/data_scripts.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ ls
+email.R       [0m[01;35mmyPlot.jpg[0m  README.md              save_weather_new.R  scripts.Rproj    store_weather.sh
+get_tweets.R  myPlot.pdf  save_weather_backup.R  save_weather.R      store_tweets.sh
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ echo "# data_scripts" >> README.md
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ git init
+Reinitialized existing Git repository in /home/rstudio/r_projects/scripts/.git/
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ git add README.md
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ git commit -m "first commit"
+[master 35787be] first commit
+ Committer: Freddy <rstudio@ip-172-31-36-66.us-east-2.compute.internal>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ git remote add origin git@github.com:fdrennan/data_scripts.git
+fatal: remote origin already exists.
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ git push -u origin master
+Counting objects: 9, done.
+Compressing objects:  33% (1/3)   Compressing objects:  66% (2/3)   Compressing objects: 100% (3/3)   Compressing objects: 100% (3/3), done.
+Writing objects:  11% (1/9)   Writing objects:  22% (2/9)   Writing objects:  33% (3/9)   Writing objects:  44% (4/9)   Writing objects:  55% (5/9)   Writing objects:  66% (6/9)   Writing objects:  77% (7/9)   Writing objects:  88% (8/9)   Writing objects: 100% (9/9)   Writing objects: 100% (9/9), 692 bytes | 0 bytes/s, done.
+Total 9 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/1)   [Kremote: Resolving deltas: 100% (1/1)   [Kremote: Resolving deltas: 100% (1/1), done.[K
+To git@github.com:fdrennan/data_scripts.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+]0;/home/rstudio/r_projects/scripts]0;rstudio@ip-172-31-36-66: ~/r_projects/scripts[01;32mrstudio@ip-172-31-36-66[00m:[01;34m~/r_projects/scripts[00m$ git add --all

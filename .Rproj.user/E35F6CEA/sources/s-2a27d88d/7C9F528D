@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1516311682181.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2674079162",
+    "id" : "7C9F528D",
+    "lastKnownWriteTime" : 1516330396,
+    "last_content_update" : 1516330396784,
+    "path" : "~/r_projects/scripts/get_tweets.R",
+    "project_path" : "get_tweets.R",
+    "properties" : {
+        "cursorPosition" : "81,34",
+        "scrollLine" : "67",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
