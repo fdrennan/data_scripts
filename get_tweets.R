@@ -89,5 +89,3 @@ tt$trump = 'trump'
 
 mongoConn$insert(tt)
 
-a=mongoConn$find('{"trump": "trump"}')
-
