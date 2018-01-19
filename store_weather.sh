@@ -1,2 +1,2 @@
 #!/bin/bash
-/usr/bin/Rscript /home/rstudio/r_projects/scripts/save_weather.R
+/usr/bin/Rscript /home/rstudio/r_projects/data_scripts/save_weather.R
