@@ -25,7 +25,7 @@ tt <- trumpTweets
 trumpTweets$actual = NA
 trumpTweets$links = NA
 # 
-filtered = ymd_hms(trumpTweets$created) > (Sys.time() %>% ymd_hms) - hm("0, 1")
+filtered = ymd_hms(trumpTweets$created) > (Sys.time() %>% ymd_hms) - hm("0, 10")
 trumpTweets = trumpTweets[filtered,]
 
 if(nrow(trumpTweets) != 0) {
@@ -112,6 +112,10 @@ tt$person = 'trump'
 
 # insert to db.
 mongoConn$insert(tt)
+
+
+mongoConn$
+
 
 
 
