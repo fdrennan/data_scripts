@@ -114,8 +114,5 @@ tt$person = 'trump'
 mongoConn$insert(tt)
 
 
-mongoConn$
-
-
 
 
